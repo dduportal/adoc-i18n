@@ -1,0 +1,134 @@
+# French Translation
+# Copyright (C) 2018 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Damien DUPORTAL <damien.duportal@gmail.com>, 2018.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2018-02-19 11:38+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Damien DUPORTAL <damien.duportal@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title =
+#: index.adoc:6
+#, no-wrap
+msgid "Main Title"
+msgstr "Titre Principal"
+
+#. type: Title ==
+#: index.adoc:8
+#, no-wrap
+msgid "Title 1"
+msgstr "Premier Titre"
+
+#. type: Plain text
+#: index.adoc:11
+msgid "This is a proof of concept for asciidoctor translation."
+msgstr "Ce document est un preuve de concept pour de la traduction asciidoctor"
+
+#. type: Plain text
+#: index.adoc:13
+msgid "Direct URL access at link:{jenkins_url}[]"
+msgstr "Accès direct à l'URL avec ce lien : link:{jenkins_url}[]"
+
+#. type: Named 'title' AttributeList argument for macro 'image'
+#: index.adoc:14
+#, no-wrap
+msgid "Logo"
+msgstr ""
+
+#. type: Target for macro image
+#: index.adoc:14
+#, no-wrap
+msgid "logo.png"
+msgstr ""
+
+#. type: Title ==
+#: index.adoc:16
+#, no-wrap
+msgid "Title 2"
+msgstr "Second Titre"
+
+#. type: Plain text
+#: index.adoc:19
+msgid "Some important points:"
+msgstr "Quelques points importants :"
+
+#. type: Plain text
+#: index.adoc:21
+msgid "Point 1"
+msgstr ""
+
+#. type: Plain text
+#: index.adoc:23
+#, no-wrap
+msgid "** Point 1.1 with some *bold* and _italic text_\n"
+msgstr "** Point 1.1 avec du texte and *gras* et en _italique_"
+
+#. type: Plain text
+#: index.adoc:25
+msgid "Point 2 with `inline code`"
+msgstr "Point 2 avec du `code inline`."
+
+#. type: Plain text
+#: index.adoc:28
+msgid "and a translated image:"
+msgstr "et une image localisée (traduite) :"
+
+#. type: Named 'title' AttributeList argument for macro 'image'
+#: index.adoc:29
+#, no-wrap
+msgid "Job's Build Button"
+msgstr "Bouton de construction de tâche"
+
+#. type: Target for macro image
+#: index.adoc:29
+#, no-wrap
+msgid "en/build-now.png"
+msgstr "fr/build-now.png"
+
+#. type: Plain text
+#: index.adoc:34
+msgid "This is very important!"
+msgstr "Ceci est très important !"
+
+#. type: Title ==
+#: index.adoc:36
+#, no-wrap
+msgid "Title 3"
+msgstr "Troisième Titre"
+
+#. type: Plain text
+#: index.adoc:39
+msgid "and a not-yet-translated image:"
+msgstr "et une image pas encore localisée (traduite)"
+
+#. type: Named 'title' AttributeList argument for macro 'image'
+#: index.adoc:40
+#, no-wrap
+msgid "Not Yet translated"
+msgstr ""
+
+#. type: Target for macro image
+#: index.adoc:40
+#, no-wrap
+msgid "en/burn.png"
+msgstr ""
+
+#. type: Plain text
+#: index.adoc:43
+msgid "Check that code:"
+msgstr "Essayez ce code :"
+
+#. type: delimited block -
+#: index.adoc:47
+#, no-wrap
+msgid "$ apt-get update\n"
+msgstr ""

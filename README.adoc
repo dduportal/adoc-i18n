@@ -1,0 +1,146 @@
+
+# Proof of Concept for Asciidoctor's translation
+
+## Source
+
+All this experiments comes from the following page:
+link:https://github.com/KiCad/kicad-doc/tree/master/doc_alternatives#internationalization[]
+
+## Requirements
+
+* GNU `make`
+* Docker, then we can provide an image with:
+** Asciidoctor
+** po4a (https://po4a.alioth.debian.org/download.php)
+
+NOTE: We use Alpine Linux as base OS, but Debian has also been
+validated as alternative
+
+* With those requirements ready,
+execute the following command line to build the environment:
++
+[source,bash]
+----
+make build-docker
+----
+
+## Workflow
+
+The idea is to have the following simplified generation "workflow".
+Example are given with a "French" translation (`$LANGUAGE=fr`).
+
+. _(Execute once for all)_ Extract translatable strings
+** Input file: `index.adoc`
+** Resulting file: `po/index.pot`
+** Example:
++
+[source,bash]
+----
+make init-translation-template
+ls -l ./samples/po/index.pot
+----
+
+. Generate a ".po" translation file for language `${LANGUAGE}`
+.. _(Execute once per translation)_ Initialize a translation
+for language `${LANGUAGE}`
+** Input file: `po/index.pot`
+** Resulting file: `po/${LANGUAGE}.po`
+** Example:
++
+[source,bash]
+----
+LANGUAGE=fr make init-translation
+ls -l ./samples/po/fr*
+----
+
+.. **OR** _(Execute once per update of original document)_
+Update the translation file
+** Input file: `index.adoc`
+** Resulting file: `po/${LANGUAGE}.po`
+** Example:
++
+[source,bash]
+----
+LANGUAGE=fr make update-translation
+ls -l ./samples/po/fr*
+----
+
+. _(Execute on each update or translation's creation)_
+Translate strings in the ".po" file
+** Input file: `po/${LANGUAGE}.po`
+** Resulting file: `po/${LANGUAGE}.po`
++
+[source,bash]
+----
+vim ./samples/po/fr.po
+ls -l ./samples/po/fr*
+----
+
+. _(Execute on each update or translation's creation)_
+Generated translated asciidoctor
+** Input files: `po/${LANGUAGE}.po` and `index.adoc`
+** Resulting file: `index_$(LANGUAGE).adoc`
++
+[source,bash]
+----
+LANGUAGE=fr make translate
+ls -l ./samples/index*fr*.adoc
+----
+
+. _(Execute on each update or translation's creation)_
+Generate HTML from asciidoctor
+** Input file: `index_$(LANGUAGE).adoc`
+** Resulting file: `index_$(LANGUAGE).html`
+** Example:
++
+[source,bash]
+----
+LANGUAGE=fr make build-doc
+ls -l ./samples/index*fr*.html
+----
+
+## UTF-8 support
+
+* I've validated against French special chars: it is OK
+* Is it working with non Roman languages? I don't know and need help on this.
+
+## Bullets
+
+* I had a hard time differenciating Asciidocotr's bullets from
+"bold font for emphazis"
+
+* **TL;DR;** use newlines around bullets (or sub-bullets)
+to make the "block" explicit
+
+## Images
+
+* Images "string" are seen as translatable string. This is is very **powerful**
+** We can provide localized images!
+** Need to test this with videos as well
+* A good strategy is to have a common image directory
+(`:imagesdir:` attribute in asciidoctor) for generic images (such as icons)
+** And use the language code in the image strings to have it translated,
+as `image::fr/build.jpg[]`
+** The fallback is the original provided string for image location: so the
+original documents (and its images) is not required to be in English by default.
+
+
+## Updating translations
+
+* The command `make update-translation` is based upon the command
+`po4a-updaterepo`
+* It is pretty impressive to keep track of changes
+* It always create a local backup of the previous version:
+If you original file was `po/fr.po`, then you will have a `po/fr.po~` file.
+** Easy to diff, however `po` seems to have a syntax on the comment to search
+for changed strings
+** Only a single backup can exists. If you run again the update command, then
+the previous backup file is overwritten: _no history_.
+
+## Testing / Validating
+
+* A process should always be run when building documents to monitor some
+translation elements as:
+** Strings not translated
+** String translated but not updated after a document update
+** Syntax and custom pattern issues like "Bullets not separated by blank lines"

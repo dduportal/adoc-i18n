@@ -1,0 +1,46 @@
+:imagesdir: ./images
+:jenkins_url: http://localhost:8080/jenkins/
+:data-uri:
+:allow-uri-read:
+
+= Titre Principal
+
+== Premier Titre
+
+Ce document est un preuve de concept pour de la traduction asciidoctor
+
+TIP: Accès direct à l'URL avec ce lien : link:{jenkins_url}[]
+
+image::logo.png[title="Logo"]
+
+== Second Titre
+
+Quelques points importants :
+
+* Point 1
+
+** Point 1.1 avec du texte and *gras* et en _italique_
+* Point 2 avec du `code inline`.
+
+
+et une image localisée (traduite) :
+
+image::fr/build-now.png[title="Bouton de construction de tâche"]
+
+[IMPORTANT]
+--
+Ceci est très important !
+--
+
+== Troisième Titre
+
+et une image pas encore localisée (traduite)
+
+image::en/burn.png[title="Not Yet translated"]
+
+Essayez ce code :
+
+[source, subs="normal", bash]
+----
+$ apt-get update
+----

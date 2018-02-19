@@ -1,0 +1,5 @@
+samples/*.html
+samples/*.pdf
+samples/temp
+*~
+.DS_Store

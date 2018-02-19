@@ -1,0 +1,47 @@
+:imagesdir: ./images
+:jenkins_url: http://localhost:8080/jenkins/
+:data-uri:
+:allow-uri-read:
+
+= Main Title
+
+== Title 1
+
+This is a proof of concept for asciidoctor translation.
+
+TIP: Direct URL access at link:{jenkins_url}[]
+
+image::logo.png[title="Logo"]
+
+== Title 2
+
+Some important points:
+
+* Point 1
+
+** Point 1.1 with some *bold* and _italic text_
+
+* Point 2 with `inline code`
+
+
+and a translated image:
+
+image::en/build-now.png[title="Job's Build Button"]
+
+[IMPORTANT]
+--
+This is very important!
+--
+
+== Title 3
+
+and a not-yet-translated image:
+
+image::en/burn.png[title="Not Yet translated"]
+
+Check that code:
+
+[source, subs="normal",bash]
+----
+$ apt-get update
+----
